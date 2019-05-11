@@ -1,0 +1,29 @@
+        public int[,] hadamard()
+        {
+            int N =fonkBool.Length;
+            int[,] Hada = new int[N,N];
+            Hada[0,0] = 1;//referansımız olcak 
+            for (int n = 1; n < N; n=n+n)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        Hada[i + n, j] = Hada[i, j];
+                        Hada[i, j + n] = Hada[i, j];
+                        Hada[i + n, j + n] = (-1) * Hada[i, j];
+                    }
+                }
+            }
+            string s = "";
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    s=s+ (Hada[i,j]).ToString();
+                }
+                s = s + "\n";
+            }
+            //MessageBox.Show(s, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return Hada;
+        }
